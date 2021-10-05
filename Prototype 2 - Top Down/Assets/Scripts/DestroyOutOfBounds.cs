@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestoryOutOfBounds : MonoBehaviour
+public class DestroyOutOfBounds : MonoBehaviour
 {
-    public float  topBound = 5.0f;
+    public float topBound = 5.00f;
 
     // Update is called once per frame
     void Update()
@@ -13,6 +13,5 @@ public class DestoryOutOfBounds : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 }

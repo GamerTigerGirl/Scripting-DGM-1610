@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 7491956199447393277}
   - component: {fileID: 7491956199447393278}
   - component: {fileID: 7491956199447393279}
+  - component: {fileID: -2009608321863835946}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.90588236, g: 0.8627451, b: 0.0627451, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,3 +135,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd4da6e55b4a714eb4bb1cfc3c9df05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2009608321863835946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491956199447393248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6460a102c95e943b5eac291bc62d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topBound: 5
