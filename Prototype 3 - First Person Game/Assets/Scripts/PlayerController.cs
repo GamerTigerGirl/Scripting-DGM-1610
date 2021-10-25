@@ -5,9 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    [Header("Stats")]
     public float moveSpeed;             // movement speed in units per second
     public float jumpForce;             // force applied upwards
 
+    public int curHP;                   //Added player HP
+    public int maxHP;
+
+    [Header("Mouse Look")]
     public float lookSensitivity;       // Mouse look sensititvity
     public float maxLookX;              // lowest down we can look
     public float minLookX;              // Hightest up we can look
@@ -27,6 +32,20 @@ public class PlayerController : MonoBehaviour
         //Get Components
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
+    }
+    //Applies Damage to the player
+
+    public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+
+        if(curHP <= 0)
+            Die();
+    }
+    // If player health is zero or below the run Die
+    void Die()
+    {
+
     }
 
     // Update is called once per frame

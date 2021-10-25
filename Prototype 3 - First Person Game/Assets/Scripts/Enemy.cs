@@ -48,6 +48,19 @@ public class Enemy : MonoBehaviour
         if(transform.position == path[0] + new Vector3(0, yPathOffset, 0))
             path.RemoveAt(0);
     }
+    //Applies Damage to the Enemy
+    public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+
+        if(curHP <= 0)
+            Die();
+    }
+    // If enemy health is zero they are destroyed
+    void Die()
+    {
+        Destroy(gameObject);
+    }
 
     void Update()
     {
