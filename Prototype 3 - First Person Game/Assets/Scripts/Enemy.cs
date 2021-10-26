@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
 
         path = navMeshPath.corners.ToList();
     }
+
     void ChaseTarget()
     {
         if(path.Count == 0)
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
         if(transform.position == path[0] + new Vector3(0, yPathOffset, 0))
             path.RemoveAt(0);
     }
+
     //Applies Damage to the Enemy
     public void TakeDamage(int damage)
     {
@@ -56,7 +58,8 @@ public class Enemy : MonoBehaviour
         if(curHP <= 0)
             Die();
     }
-    // If enemy health is zero they are destroyed
+
+    //If enemy health is zero they are destroyed
     void Die()
     {
         Destroy(gameObject);
@@ -69,9 +72,9 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
         transform.eulerAngles = Vector3.up * angle;
 
-        // Calulate the distance between the enemy and the player
+        //Calulate the distance between the enemy and the player
         float dist = Vector3.Distance(transform.position, target.transform.position);
-        // If within attackerange shoot at player
+        //If within attackerange shoot at player
         if(dist <= attackRange)
         {
             if(weapon.CanShoot())

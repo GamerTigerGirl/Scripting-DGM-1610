@@ -27,10 +27,10 @@ public class ObjectPool : MonoBehaviour
 
             return obj; 
     }
-    // Whenever we need an object call this function
+    //Whenever we need an object call this function
     public GameObject GetObject()
     {
-        // Collect all of inactive pooled object
+        //Collect all of inactive pooled object
         GameObject obj = pooledObjs.Find(x => x.activeInHierarchy == false);
 
         //If the scene has zero active objects
@@ -39,7 +39,7 @@ public class ObjectPool : MonoBehaviour
             obj = CreateNewObject();
         }
 
-        //activate created objects
+        //Activate created objects
         obj.SetActive(true);
 
         return obj;

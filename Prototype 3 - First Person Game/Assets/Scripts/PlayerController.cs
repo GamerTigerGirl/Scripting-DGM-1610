@@ -6,17 +6,24 @@ public class PlayerController : MonoBehaviour
 {
 
     [Header("Stats")]
-    public float moveSpeed;             // movement speed in units per second
-    public float jumpForce;             // force applied upwards
+    //Movement speed in units per second
+    public float moveSpeed;
+    //Force applied upwards
+    public float jumpForce;
 
-    public int curHP;                   //Added player HP
+    //Added Player HP
+    public int curHP;
     public int maxHP;
 
     [Header("Mouse Look")]
-    public float lookSensitivity;       // Mouse look sensititvity
-    public float maxLookX;              // lowest down we can look
-    public float minLookX;              // Hightest up we can look
-    private float rotX;                 // Current x rotation of the camera
+    //Mouse look sensititvity
+    public float lookSensitivity;
+    //Lowest down we can look
+    public float maxLookX;
+    //Hightest up we can look
+    public float minLookX;
+    //Current x rotation of the camera
+    private float rotX;
 
     private Camera camera;
     private Rigidbody rb;
@@ -33,8 +40,8 @@ public class PlayerController : MonoBehaviour
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
     }
-    //Applies Damage to the player
 
+    //Applies Damage to the player
     public void TakeDamage(int damage)
     {
         curHP -= damage;
@@ -42,7 +49,7 @@ public class PlayerController : MonoBehaviour
         if(curHP <= 0)
             Die();
     }
-    // If player health is zero or below the run Die
+    //If player health is zero or below the run Die
     void Die()
     {
 
@@ -54,13 +61,13 @@ public class PlayerController : MonoBehaviour
         Move();
         CamLook();
         
-        // Fire Button
+        //Fire Button
         if(Input.GetButton("Fire1"))
         {
             if(weapon.CanShoot())
                 weapon.Shoot();
         }
-        // Jump Button
+        //Jump Button
         if(Input.GetButtonDown("Jump"))
             Jump();
     }
@@ -70,16 +77,17 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxis("Horizontal") * moveSpeed;
         float z = Input.GetAxis("Vertical") * moveSpeed;
 
-        // rb.velocity = new Vector3(x, rb.velocity.y, z); - old code
-        // Move direction relative to the camera
+        //rb.velocity = new Vector3(x, rb.velocity.y, z); - old code
+        //Move direction relative to the camera
         Vector3 dir = transform.right * x + transform.forward * z;
         dir.y = rb.velocity.y;
-        // Jump with direction relative to the camera
+        //Jump with direction relative to the camera
         rb.velocity = dir;
     }
 
     void CamLook()
     {
+        //Mouse look sensitivity
         float y = Input.GetAxis("Mouse X") * lookSensitivity;
         rotX += Input.GetAxis("Mouse Y") * lookSensitivity;
 
@@ -94,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
         if(Physics.Raycast(ray, 1.1f))
         {
-            // Add force to jump
+            //Add force to jump
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }

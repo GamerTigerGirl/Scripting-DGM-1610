@@ -18,13 +18,13 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // If hit deals out damage to the Player
+        //If hit deals out damage to the Player
         if(other.CompareTag("Player"))
             other.GetComponent<PlayerController>().TakeDamage(damage);
-        // If hit deals out damage to the Enemy
+        //If hit deals out damage to the Enemy
         else if(other.CompareTag("Enemy"))
             other.GetComponent<Enemy>().TakeDamage(damage);
-        // Disable Projectile for future use
+        //Disable Projectile for future use
         gameObject.SetActive(false);
     }
 

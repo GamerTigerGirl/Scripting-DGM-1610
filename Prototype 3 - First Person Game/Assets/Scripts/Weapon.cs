@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    // public GameObject bulletPrefab; (old code)
+    //public GameObject bulletPrefab; (old code)
     public ObjectPool bulletPool; // <--- (new code)
     
     public Transform muzzle;
@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
 
     void Awake()
     {
-        // Disable cursor
+        //Disable cursor
         Cursor.lockState = CursorLockMode.Locked;
         if(GetComponent<PlayerController>())
             isPlayer = true;
@@ -43,28 +43,17 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        // Cooldown
+        //Cooldown
         lastShootTime = Time.time;
         curAmmo --;
-        // Creating an instance of the bullet prefab at muzzle position and rotation
-        // GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation); (old code)
+        //Creating an instance of the bullet prefab at muzzle position and rotation
+        //GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation); (old code)
         GameObject bullet = bulletPool.GetObject(); // <--- (new code)
         bullet.transform.position = muzzle.position;
         bullet.transform.rotation = muzzle.rotation;
 
-        //add velocity to projectile
+        //Add velocity to projectile
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
