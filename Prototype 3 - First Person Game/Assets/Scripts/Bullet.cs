@@ -32,7 +32,6 @@ public class Bullet : MonoBehaviour
             other.GetComponent<Enemy>().TakeDamage(damage);
         //Disable Projectile for future use
         gameObject.SetActive(false);
-        
     }
 
     // Update is called once per frame

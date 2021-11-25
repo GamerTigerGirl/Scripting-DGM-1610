@@ -62,6 +62,7 @@ public class Enemy : MonoBehaviour
     //If enemy health is zero they are destroyed
     void Die()
     {
+        GameManager.instance.AddScore(scoreToGive);
         Destroy(gameObject);
     }
 
