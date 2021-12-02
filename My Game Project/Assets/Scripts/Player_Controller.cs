@@ -6,18 +6,29 @@ public class Player_Controller : MonoBehaviour
 {
     //Added player movement
     public float speed;
-    public float hInput;
-    public float vInput;
-    
+    public float jumpForce;
 
-    public GameObject projectile;
-    public Transform launcher;
-    public Vector3 offset = new Vector3(0,1,0);
+    private Rigidbody2D rb;
+    private float moveDirection;
+    public bool OnGround = true;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
-    // Update is called once per frame
     void Update()
     {
-    
+        //Input player movement
+        moveDirection = Input.GetAxis("Horizontal");
+
+        rb.velocity = new Vector2(moveDirection * speed, rb.velocity.y);
+
+        //Added Jump Button
+        if(Input.GetButtonDown("Jump"))
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+
     }
 }
